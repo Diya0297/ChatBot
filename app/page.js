@@ -7,16 +7,16 @@ import { useRouter } from 'next/navigation'
 export default function HomePage() {
   const router = useRouter()
 
-  const handleStartChat = () => {
-    router.push('/chat') // Navigate to the chat page
-  }
+  // const handleStartChat = () => {
+  //   router.push('/chat') // Navigate to the chat page
+  // }
 
   const handleLogin = () => {
-    router.push('/login') // Navigate to the login page
+    router.push('/sign-in') // Navigate to the login page
   }
 
   const handleRegister = () => {
-    router.push('/register') // Navigate to the registration page
+    router.push('/sign-up') // Navigate to the registration page
   }
 
   return (
@@ -43,25 +43,19 @@ export default function HomePage() {
       >
         Welcome to ChatBot
       </Typography>
+
+      <Typography
+        variant='h5'
+        component='h2'
+        sx={{
+          marginBottom: '2rem',
+          color: '#00796b',
+          fontWeight: 'medium',
+        }}
+      >
+        Please SignIn or SignUp to start a chat
+      </Typography>
       <Stack spacing={2}>
-        <Button
-          variant='contained'
-          color='primary'
-          onClick={handleStartChat}
-          sx={{
-            backgroundColor: '#004d40', // Dark teal
-            color: 'white',
-            padding: '0.75rem 2rem',
-            borderRadius: 'var(--border-radius)',
-            fontWeight: 'bold',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-            '&:hover': {
-              backgroundColor: '#00251a', // Darker teal on hover
-            },
-          }}
-        >
-          Start Chat
-        </Button>
         <Stack direction='row' spacing={2} justifyContent='center'>
           <Button
             variant='outlined'
@@ -79,7 +73,7 @@ export default function HomePage() {
               },
             }}
           >
-            Login
+            Sign In
           </Button>
           <Button
             variant='outlined'
@@ -97,7 +91,7 @@ export default function HomePage() {
               },
             }}
           >
-            Register
+            Sign Up
           </Button>
         </Stack>
       </Stack>

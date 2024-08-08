@@ -1,9 +1,11 @@
 'use client'
 
 // import styles from './page.module.css'
+
 import { Box, Button, Stack, TextField, Typography } from '@mui/material'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useUser, UserButton } from '@clerk/nextjs'
 
 export default function ChatMessage() {
   const [messages, setMessages] = useState([
@@ -13,7 +15,18 @@ export default function ChatMessage() {
     },
   ])
   const [message, setMessage] = useState('')
+
+  const { isLoaded, isSignedIn, user } = useUser()
   const router = useRouter()
+
+  // Redirect to home if not authenticated
+  useEffect(() => {
+    if (!isLoaded || !isSignedIn) {
+      router.push('/') // Redirect to home if user is not signed in
+    }
+  }, [isSignedIn, router])
+
+  //console.log(user?.fullName)
 
   const sendMessage = async () => {
     if (!message.trim()) return // Prevent sending empty messages
@@ -137,6 +150,16 @@ export default function ChatMessage() {
         >
           ChatBot
         </Typography>
+        <Typography
+          variant='h6'
+          sx={{
+            color: '#00796b',
+            fontWeight: 'bold',
+            textAlign: 'right',
+          }}
+        >
+          {user && <UserButton />} {/* Display user name */}
+        </Typography>
       </Box>
       <Stack
         direction='column'
@@ -175,7 +198,7 @@ export default function ChatMessage() {
                 borderRadius='var(--border-radius)'
                 p={2}
                 maxWidth='80%' // Limit the width for better readability
-                wordBreak='break-word'
+                wordbreak='break-word'
                 boxShadow='inset 0 0 5px rgba(0, 0, 0, 0.1)'
               >
                 <Typography variant='body1'>{message.content}</Typography>
