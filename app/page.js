@@ -12,11 +12,11 @@ export default function HomePage() {
   }
 
   const handleLogin = () => {
-    router.push('/login') // Navigate to the login page
+    router.push('/sign-in') // Navigate to the login page
   }
 
   const handleRegister = () => {
-    router.push('/register') // Navigate to the registration page
+    router.push('/sign-up') // Navigate to the registration page
   }
 
   return (
@@ -42,6 +42,18 @@ export default function HomePage() {
         }}
       >
         Welcome to ChatBot
+      </Typography>
+
+      <Typography
+        variant='h5'
+        component='h2'
+        sx={{
+          marginBottom: '2rem',
+          color: '#00796b',
+          fontWeight: 'medium',
+        }}
+      >
+        Please SignIn or SignUp to store your chat history
       </Typography>
       <Stack spacing={2}>
         <Button
@@ -79,7 +91,7 @@ export default function HomePage() {
               },
             }}
           >
-            Login
+            Sign In
           </Button>
           <Button
             variant='outlined'
@@ -97,7 +109,7 @@ export default function HomePage() {
               },
             }}
           >
-            Register
+            Sign Up
           </Button>
         </Stack>
       </Stack>
