@@ -20,11 +20,11 @@ export default function ChatMessage() {
   const router = useRouter()
 
   // Redirect to home if not authenticated
-  useEffect(() => {
-    if (!isLoaded || !isSignedIn) {
-      router.push('/') // Redirect to home if user is not signed in
-    }
-  }, [isSignedIn, router])
+  // useEffect(() => {
+  //   if (!isLoaded || !isSignedIn) {
+  //     router.push('/') // Redirect to home if user is not signed in
+  //   }
+  // }, [isSignedIn, router])
 
   //console.log(user?.fullName)
 

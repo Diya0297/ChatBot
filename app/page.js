@@ -7,9 +7,9 @@ import { useRouter } from 'next/navigation'
 export default function HomePage() {
   const router = useRouter()
 
-  // const handleStartChat = () => {
-  //   router.push('/chat') // Navigate to the chat page
-  // }
+  const handleStartChat = () => {
+    router.push('/chat') // Navigate to the chat page
+  }
 
   const handleLogin = () => {
     router.push('/sign-in') // Navigate to the login page
@@ -53,9 +53,27 @@ export default function HomePage() {
           fontWeight: 'medium',
         }}
       >
-        Please SignIn or SignUp to start a chat
+        Please SignIn or SignUp to store your chat history
       </Typography>
       <Stack spacing={2}>
+        <Button
+          variant='contained'
+          color='primary'
+          onClick={handleStartChat}
+          sx={{
+            backgroundColor: '#004d40', // Dark teal
+            color: 'white',
+            padding: '0.75rem 2rem',
+            borderRadius: 'var(--border-radius)',
+            fontWeight: 'bold',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            '&:hover': {
+              backgroundColor: '#00251a', // Darker teal on hover
+            },
+          }}
+        >
+          Start Chat
+        </Button>
         <Stack direction='row' spacing={2} justifyContent='center'>
           <Button
             variant='outlined'
